@@ -25,9 +25,9 @@ const getThatLiftGoing = () => {
 
    const canSomeoneEnterTheLift = (currentQueue) => currentQueue.length > 0 && lift.peopleInside.length < liftCapacity;
 
-   const loadPassengers = (currentQueue) => {
+   const loadPassengers = (currentQueue = []) => {
       if (canSomeoneEnterTheLift(queues)) {
-         Array.isArray(currentQueue) && currentQueue.forEach((person) => {
+         currentQueue.forEach((person) => {
             if (
                (((lift.currentDirection === 'up' || lift.currentPosition === 0) && person > lift.currentPosition)
                || ((lift.currentDirection === 'down' || lift.currentPosition === buildingHeight) && person < lift.currentPosition))
@@ -69,4 +69,4 @@ const getThatLiftGoing = () => {
    return lift.visitedFloors;
 };
 
-console.log('The lift has gone through flors:' + getThatLiftGoing());
+console.log('The lift has gone through floors: ' + getThatLiftGoing());
